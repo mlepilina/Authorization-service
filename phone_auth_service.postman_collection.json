@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "90b2e3c5-5925-45d1-a38c-3d505fd66d58",
+		"name": "phone_auth_service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28041720"
+	},
+	"item": [
+		{
+			"name": "Авторизация шаг 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone_number\": \"89090066879\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/authorization/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"authorization",
+						""
+					]
+				},
+				"description": "authorization\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Авторизация шаг 2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone_number\": \"89090066879\",\r\n    \"code\": \"400136\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/authorization/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"authorization",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Профиль пользователя",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjI0MjExLCJpYXQiOjE3MDE2MDIzODEsImp0aSI6ImUyMWUwNzY4M2E1NzQ4MGJiNzRmNzJhMzBiNjY0M2I3IiwidXNlcl9pZCI6MTF9.pK-0wlI3aZtxh-XM1gPpms3qA7W6M5hM9QS8IaHBr6k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/info/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"info",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Приглашенные юзеры",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjI0MjExLCJpYXQiOjE3MDE2MDIzODEsImp0aSI6ImUyMWUwNzY4M2E1NzQ4MGJiNzRmNzJhMzBiNjY0M2I3IiwidXNlcl9pZCI6MTF9.pK-0wlI3aZtxh-XM1gPpms3qA7W6M5hM9QS8IaHBr6k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/info/invite/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"info",
+						"invite",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Установка чужого инвайт кода",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjI0MjExLCJpYXQiOjE3MDE2MDIzODEsImp0aSI6ImUyMWUwNzY4M2E1NzQ4MGJiNzRmNzJhMzBiNjY0M2I3IiwidXNlcl9pZCI6MTF9.pK-0wlI3aZtxh-XM1gPpms3qA7W6M5hM9QS8IaHBr6k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"invite_code\": \"905088\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/info/invite/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"info",
+						"invite",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Обновление refresh токена",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcwMTY4ODc4MSwiaWF0IjoxNzAxNjAyMzgxLCJqdGkiOiIwODk0ZDAyMzczMzY0ZTVkYTM1ODQwOTk3NTU1MzRlMyIsInVzZXJfaWQiOjExfQ.PAg_QRVWZTzHUYTho7nDYKDM1MH5aFogSU1nPbfoyA8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/refresh/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Выход из системы",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcwMTY4ODc4MSwiaWF0IjoxNzAxNjAyMzgxLCJqdGkiOiIwODk0ZDAyMzczMzY0ZTVkYTM1ODQwOTk3NTU1MzRlMyIsInVzZXJfaWQiOjExfQ.PAg_QRVWZTzHUYTho7nDYKDM1MH5aFogSU1nPbfoyA8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/logout/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

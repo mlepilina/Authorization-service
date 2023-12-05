@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+
+  redis:
+    image: redis
+    ports:
+      - '6378:6379'
+
+  app:
+    build: .
+    env_file:
+      - .env
+
+    command:
+      - /bin/bash
+      - -c
+      - |
+        python manage.py migrate
+        python manage.py runserver 0.0.0.0:8000
+    depends_on: [redis, db]
+
+    ports:
+      - '8001:8000'
+
+  celery:
+    build: .
+    env_file:
+      - .env
+
+    command: celery -A config worker -l DEBUG
+
+volumes:
+  pg_data:
